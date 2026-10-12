@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 tree = ["*", ["+", 10, 5], 2]
 
 left = tree[1]
@@ -23,7 +22,6 @@ elif tree[0] == "/":
     result = left_result / right
 
 print("Expression: (10 + 5) * 2")
-=======
 tree = ["*", ["+", 10, 5], 2]
 
 left = tree[1]
@@ -47,6 +45,4 @@ elif tree[0] == "*":
 elif tree[0] == "/":
     result = left_result / right
 
-print("Expression: (10 + 5) * 2")
->>>>>>> e7216e6 (Experiential Learning Phase-2)
 print("Result:", result)
