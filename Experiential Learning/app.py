@@ -5,10 +5,25 @@ Handles web routes, form submissions, query parameter preloads, input validation
 and renders the Expression Tree interface using server-side templates.
 """
 
+import os
+
 from flask import Flask, render_template, request
 from expression_tree import process_expression, ExpressionError
 
 app = Flask(__name__)
+
+
+def start_server():
+    """Start the Flask development server using environment-configurable host and port."""
+    host = os.environ.get('HOST', '0.0.0.0')
+    port = int(os.environ.get('PORT', '5000'))
+    debug = os.environ.get('DEBUG', 'False').lower() in {'1', 'true', 'yes', 'on'}
+
+    print("===============================================================")
+    print(" Starting Expression Tree Generator & Evaluator Server...")
+    print(f" Access the application at: http://{host}:{port}")
+    print("===============================================================")
+    app.run(host=host, port=port, debug=debug)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -65,9 +80,4 @@ def index():
 
 
 if __name__ == '__main__':
-    # Run the Flask development server on localhost:5000
-    print("===============================================================")
-    print(" Starting Expression Tree Generator & Evaluator Server...")
-    print(" Access the application at: http://127.0.0.1:5000")
-    print("===============================================================")
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    start_server()

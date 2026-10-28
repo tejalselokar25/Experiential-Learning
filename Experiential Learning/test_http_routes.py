@@ -7,6 +7,29 @@ and HTML rendering through the Flask test client and HTTP requests.
 from app import app
 import urllib.parse
 
+
+def test_public_bind_configuration(monkeypatch):
+    import app as app_module
+
+    captured = {}
+
+    def fake_run(host, port, debug):
+        captured['host'] = host
+        captured['port'] = port
+        captured['debug'] = debug
+
+    monkeypatch.setattr(app_module.app, 'run', fake_run)
+    monkeypatch.setenv('HOST', '0.0.0.0')
+    monkeypatch.setenv('PORT', '8080')
+    monkeypatch.setenv('DEBUG', 'False')
+
+    app_module.start_server()
+
+    assert captured['host'] == '0.0.0.0'
+    assert captured['port'] == 8080
+    assert captured['debug'] is False
+
+
 def test_routes():
     print("=== TESTING FLASK HTTP ROUTES ===")
     client = app.test_client()
