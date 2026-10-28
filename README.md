@@ -4,6 +4,8 @@ A comprehensive, college-level computer science project that builds, visualizes,
 
 Built with **Pure Python (Flask)** on the backend and **HTML5 + Tailwind CSS** on the frontend. No external JavaScript charting libraries or dangerous `eval()` functions are used.
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/tejalselokar25/Experiential-Learning)
+
 ---
 
 ## 📋 Table of Contents
